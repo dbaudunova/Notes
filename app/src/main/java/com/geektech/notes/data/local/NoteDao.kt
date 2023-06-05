@@ -7,14 +7,14 @@ import com.geektech.notes.data.model.NoteEntity
 interface NoteDao {
 
     @Query("SELECT * FROM notes")
-    fun getAllNotes(): List<NoteEntity>
+    suspend fun getAllNotes(): List<NoteEntity>
 
     @Insert
-    fun createNotes(noteEntity: NoteEntity)
+    suspend fun createNotes(noteEntity: NoteEntity)
 
     @Update
-    fun updateNotes(noteEntity: NoteEntity)
+    suspend fun updateNotes(noteEntity: NoteEntity)
 
     @Delete
-    fun deleteNotes(noteEntity: NoteEntity)
+    suspend fun deleteNotes(noteEntity: NoteEntity)
 }

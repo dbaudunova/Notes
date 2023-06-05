@@ -5,13 +5,22 @@ import com.geektech.notes.data.mapper.toEntity
 import com.geektech.notes.data.mapper.toNote
 import com.geektech.notes.domain.model.Note
 import com.geektech.notes.domain.repository.NoteRepository
+import javax.inject.Inject
 
-class NoteRepositoryImpl(
+class NoteRepositoryImpl @Inject constructor(
 
     private val noteDao: NoteDao
 
 ) : NoteRepository {
     override fun getAllNotes(): List<Note> {
+        /*val listEntity = noteDao.getAllNotes()
+        val listOfNote = mutableListOf<Note>()
+
+        for (item in listEntity){
+            listOfNote.add(item.toNote())
+        }
+        return listOfNote*/
+
         return noteDao.getAllNotes().map {
             it.toNote()
         }
