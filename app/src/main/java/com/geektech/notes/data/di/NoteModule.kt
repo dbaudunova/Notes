@@ -25,7 +25,7 @@ object NoteModule {
         context,
         NoteDatabase::class.java,
         "note_db"
-    ).allowMainThreadQueries().build()
+    ).build()
 
     @Singleton
     @Provides

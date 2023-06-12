@@ -1,4 +1,4 @@
-package com.geektech.notes.presentation
+package com.geektech.notes.presentation.ui.fragments.create_edit_note
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,6 +6,7 @@ import com.geektech.notes.domain.model.Note
 import com.geektech.notes.domain.usecase.CreateNoteUseCase
 import com.geektech.notes.domain.usecase.UpdateNoteUseCase
 import com.geektech.notes.domain.utils.Resource
+import com.geektech.notes.presentation.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CreateNoteViewModel @Inject constructor(
+class CreateEditNoteViewModel @Inject constructor(
     private val createNoteUseCase: CreateNoteUseCase,
     private val updateNoteUseCase: UpdateNoteUseCase
 ) : ViewModel() {

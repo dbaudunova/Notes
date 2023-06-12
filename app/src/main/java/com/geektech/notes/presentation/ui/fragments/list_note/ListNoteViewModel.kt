@@ -1,4 +1,4 @@
-package com.geektech.notes.presentation
+package com.geektech.notes.presentation.ui.fragments.list_note
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,6 +6,7 @@ import com.geektech.notes.domain.model.Note
 import com.geektech.notes.domain.usecase.DeleteNoteUseCase
 import com.geektech.notes.domain.usecase.GetAllNotesUseCase
 import com.geektech.notes.domain.utils.Resource
+import com.geektech.notes.presentation.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,7 +50,7 @@ class ListNoteViewModel @Inject constructor(
 
     fun deleteNote(note: Note) {
         viewModelScope.launch(Dispatchers.IO) {
-            deleteNoteUseCase.deleteNote(note).collect() { res ->
+            deleteNoteUseCase.deleteNote(note).collect { res ->
                 when (res) {
                     is Resource.Error -> {
                         _deleteNoteState.value = UIState.Error(res.message!!)

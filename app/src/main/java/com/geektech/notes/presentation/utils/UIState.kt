@@ -1,4 +1,4 @@
-package com.geektech.notes.presentation
+package com.geektech.notes.presentation.utils
 
 sealed class UIState<T> {
     class Loading<T> : UIState<T>()
