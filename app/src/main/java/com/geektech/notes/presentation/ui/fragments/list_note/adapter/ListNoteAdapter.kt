@@ -10,11 +10,11 @@ import com.geektech.notes.databinding.ItemNoteBinding
 import com.geektech.notes.domain.model.Note
 
 class ListNoteAdapter(
-    private val deleteNote: (Note) -> Unit,
-    private val updateNote: (Note) -> Unit
+    private val deleteNote: (com.geektech.notes.domain.model.Note) -> Unit,
+    private val updateNote: (com.geektech.notes.domain.model.Note) -> Unit
 ) : Adapter<ListNoteAdapter.ListNoteViewHolder>() {
 
-    private var list = arrayListOf<Note>()
+    private var list = arrayListOf<com.geektech.notes.domain.model.Note>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListNoteViewHolder {
         return ListNoteViewHolder(
@@ -33,19 +33,19 @@ class ListNoteAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addList(list: List<Note>) {
-        this.list = list as ArrayList<Note>
+    fun addList(list: List<com.geektech.notes.domain.model.Note>) {
+        this.list = list as ArrayList<com.geektech.notes.domain.model.Note>
         notifyDataSetChanged()
     }
     @SuppressLint("NotifyDataSetChanged")
-    fun delete(liste: Note) {
+    fun delete(liste: com.geektech.notes.domain.model.Note) {
         list.remove(liste)
         notifyDataSetChanged()
     }
 
     inner class ListNoteViewHolder(private val binding: ItemNoteBinding) :
         ViewHolder(binding.root) {
-        fun bind(note: Note) {
+        fun bind(note: com.geektech.notes.domain.model.Note) {
             binding.tvTitle.text = note.title
             binding.tvDescription.text = note.description
 

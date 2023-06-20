@@ -42,6 +42,9 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
     implementation(Deps.UI.core)
     implementation(Deps.UI.appcompat)
     implementation(Deps.UI.material)
@@ -61,6 +64,7 @@ dependencies {
 
     // Coroutines
     implementation(Deps.Coroutines.android)
+    implementation(Deps.Coroutines.core)
 
     // Lifecycle
     implementation(Deps.Lifecycle.viewmodel)

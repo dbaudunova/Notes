@@ -40,8 +40,8 @@ object Deps {
     }
 
     object Coroutines {
-        const val android =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     }
 
     object Lifecycle {
@@ -59,6 +59,10 @@ object Deps {
         const val binding =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:${Versions.binding}"
     }
+
+    object Javax {
+        const val inject = "javax.inject:javax.inject:1"
+    }
 }
 
 object Plugins {
@@ -71,9 +75,14 @@ object Plugins {
     object Kotlin {
         const val android = "org.jetbrains.kotlin.android"
         const val kapt = "kotlin-kapt"
+        const val jvm = "org.jetbrains.kotlin.jvm"
     }
 
     object DaggerHilt {
         const val hilt = "com.google.dagger.hilt.android"
+    }
+
+    object Java {
+        const val library = "java-library"
     }
 }

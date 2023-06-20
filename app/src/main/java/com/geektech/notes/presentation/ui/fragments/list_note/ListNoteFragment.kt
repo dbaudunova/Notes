@@ -51,7 +51,7 @@ class ListNoteFragment : BaseFragment(R.layout.fragment_list_note) {
         binding.rvNotes.adapter = adapter
     }
 
-    private fun deleteNote(note: Note) {
+    private fun deleteNote(note: com.geektech.notes.domain.model.Note) {
         viewModel.deleteNote(note)
     }
 
@@ -65,7 +65,7 @@ class ListNoteFragment : BaseFragment(R.layout.fragment_list_note) {
         viewModel.getAllNotes()
     }
 
-    private fun updateNote(note: Note) {
+    private fun updateNote(note: com.geektech.notes.domain.model.Note) {
         val bundle = Bundle()
         bundle.putSerializable(KEY, note)
         findNavController().navigate(R.id.action_listNoteFragment_to_createNoteFragment, bundle)

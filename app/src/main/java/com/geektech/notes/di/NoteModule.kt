@@ -1,4 +1,4 @@
-package com.geektech.notes.data.di
+package com.geektech.notes.di
 
 import android.content.Context
 import androidx.room.Room
@@ -21,18 +21,19 @@ object NoteModule {
     @Provides
     fun provideNoteDatabase(
         @ApplicationContext context: Context
-    ): NoteDatabase = Room.databaseBuilder(
+    ): com.geektech.notes.data.local.NoteDatabase = Room.databaseBuilder(
         context,
-        NoteDatabase::class.java,
+        com.geektech.notes.data.local.NoteDatabase::class.java,
         "note_db"
     ).build()
 
     @Singleton
     @Provides
-    fun provideNoteDao(noteDatabase: NoteDatabase) = noteDatabase.noteDao()
+    fun provideNoteDao(noteDatabase: com.geektech.notes.data.local.NoteDatabase) = noteDatabase.noteDao()
 
     @Singleton
     @Provides
-    fun provideNoteRepository(noteDao: NoteDao): NoteRepository = NoteRepositoryImpl(noteDao)
+    fun provideNoteRepository(noteDao: com.geektech.notes.data.local.NoteDao): com.geektech.notes.domain.repository.NoteRepository =
+        com.geektech.notes.data.repository.NoteRepositoryImpl(noteDao)
 
 }

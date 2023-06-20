@@ -10,23 +10,23 @@ import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected fun <T> Flow<Resource<T>>.collectData(
+    protected fun <T> Flow<com.geektech.notes.domain.utils.Resource<T>>.collectData(
         _state: MutableStateFlow<UIState<T>>
     ) {
         viewModelScope.launch {
             this@collectData.collect { res ->
                 when (res) {
-                    is Resource.Error -> {
+                    is com.geektech.notes.domain.utils.Resource.Error -> {
                         _state.value = UIState.Error(res.message!!)
                     }
 
-                    is Resource.Loading -> {
+                    is com.geektech.notes.domain.utils.Resource.Loading -> {
                         _state.value = UIState.Loading()
                     }
 
-                    is Resource.Success -> {
+                    is com.geektech.notes.domain.utils.Resource.Success -> {
                         if (res.data != null) {
-                            _state.value = UIState.Success(res.data)
+                            _state.value = UIState.Success(res.data!!)
                         }
                     }
                 }

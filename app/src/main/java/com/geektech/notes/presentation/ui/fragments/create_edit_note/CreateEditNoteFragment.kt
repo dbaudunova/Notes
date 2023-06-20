@@ -17,15 +17,15 @@ class CreateEditNoteFragment : BaseFragment(R.layout.fragment_create_edit_note) 
 
     private val binding by viewBinding(FragmentCreateEditNoteBinding::bind)
     private val viewModel by viewModels<CreateEditNoteViewModel>()
-    private var note: Note? = null
+    private var note: com.geektech.notes.domain.model.Note? = null
     override fun initClickListeners() {
-        note = arguments?.getSerializable(KEY) as Note?
+        note = arguments?.getSerializable(KEY) as com.geektech.notes.domain.model.Note?
         binding.etTitle.setText(note?.title)
         binding.etDescription.setText(note?.description)
         if (note == null) {
             binding.btnSave.setOnClickListener {
                 viewModel.createNote(
-                    Note(
+                    com.geektech.notes.domain.model.Note(
                         title = binding.etTitle.text.toString(),
                         description = binding.etDescription.text.toString()
                     )
